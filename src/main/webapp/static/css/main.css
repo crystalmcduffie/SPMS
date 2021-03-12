@@ -1,0 +1,31 @@
+body {
+    background-color: #ff4d4d;
+    background-image: linear-gradient(to bottom, #ffffcc 0%, #ff0000 87%);
+    color: #ffffe6;
+    font-family: 'Verdana', 'BookAntiqua' 'Helvetica', 'Trebuchet MS', sans-serif;
+    padding:0px;
+}
+
+
+main {
+    border-radius: 14px;
+    margin: auto;
+    width: 70%;
+}
+
+table, tr, td {
+    border: 1px #cc7722;
+}
+
+div{
+	align-content: center;
+	text-align: center;
+}
+
+h3, h1, h2, h4, form{
+	text-align : center;
+}
+
+table, th, td{
+	border: 2px;
+}
