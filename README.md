@@ -13,11 +13,13 @@ The draft approval process depends on which story type the draft falls under. No
 
 
 # Technologies Used
-Java - version 8
-Apache Tomcat - version 9 
-Hibernate - version 5.2.12
-AWS Relation Database System
-JUnit - version 5
+<ul>
+  <li>Apache Tomcat - version 9</li>
+  <li>AWS Relation Database System</li>
+  <li>Hibernate - version 5.2.12</li>
+  <li>Java - version 8</li>
+  <li>JUnit - version 5</li>
+</ul>
 
 
 # Features
