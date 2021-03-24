@@ -52,7 +52,7 @@ Run the project on http://localhost:8080/SPMS/static/index.html
 
 
 # Usage
-To view the author and editor dashboards, use any of the following logins:
+To view the author or editor dashboards, use any of the following logins:
 
 Authors:
 <table>
