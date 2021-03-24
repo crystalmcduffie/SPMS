@@ -20,7 +20,7 @@ The draft approval process depends on which story type the draft falls under. No
   <li>AWS Relation Database System</li>
   <li>Hibernate - version 5.2.12</li>
   <li>Java - version 8</li>
-  <li>Javascript</li>
+  <li>JavaScript</li>
   <li>JUnit - version 5</li>
 </ul>
 
