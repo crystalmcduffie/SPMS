@@ -9,6 +9,8 @@ This system assigns pitches to editors based on their workload, which genre comm
 
 When assigning a pitch, the number of pitches for every eligible editor is compared. The system assigns the pitch to the editor with the least amount of pitches.
 
+Assistant and general editors must work on pitches that are labeled a high priority. They cannot approve pitches with low priority if there are high priority pitches on their dashboard. This excludes any pitches that they are a senior editor on.
+
 The draft approval process depends on which story type the draft falls under. Novels and novellas need to be approved by a majority of editors in the relevant genre committee to reach final approval. Short stories need to be approved by a senior editor and at least one other editor from in the relevant genre committe. Articles only need to be approved by the senior editor in the relevant genre committee. 
 
 
