@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.junit.Ignore;
 //import org.junit.jupiter.api.BeforeAll;
 //import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -43,6 +44,7 @@ public class MessageHibernateTest {
 	public void test() {
 		fail("Testing");
 	}
+	
 	@BeforeAll
 	public static void setup() {
 		draftServ = new DraftServiceImpl();
@@ -52,9 +54,14 @@ public class MessageHibernateTest {
 		pitchServ = new PitchServiceImpl();
 		
 	}
-//	
-//
-//	
+	
+	@Test
+	public void getPitchMessage(){
+		PitchMessage pm = messageServ.getPitchMessageById(5);
+		System.out.println(pm);
+	}
+	
+
 	@Test
 	public void testSendReviewRequestE2E() {
 		Editor se = editorServ.getByUsername("kate");
@@ -72,8 +79,8 @@ public class MessageHibernateTest {
 		
 		messageServ.sendReviewRequestE2E(se, re, pr, pm);
 
-		//printEditorEPMAndEPR(se);
-		//printEditorEPMAndEPR(re);
+		printEditorEPMAndEPR(se);
+		printEditorEPMAndEPR(re);
 		
 	}
 	
@@ -244,32 +251,32 @@ public class MessageHibernateTest {
 //		Set<PitchMessage> SPM = a.getSentPitchMessages();
 //	}
 	
-//	public static void printEditorEPMAndEPR(Editor e){
-//		Set<PitchMessage> SPM = messageServ.getSentEditorPitchMessages(e);
-//		Set<PitchMessage> RPM = messageServ.getReceivedEditorPitchMessages(e);
-//		Set<PitchReview> SPR = messageServ.getSentEditorPitchReview(e);
-//		Set<PitchReview> RPR = messageServ.getReceivedEditorPitchReview(e);
-//		
-//		log.debug(e.getUsername() + "'s sent pitch messages");
-//		for(PitchMessage pm : SPM) {
-//			log.debug(pm.getMessage());
-//		}
-//		log.debug(e.getUsername() + "'s received pitch messages");
-//		for(PitchMessage pm : RPM) {
-//			log.debug(pm.getMessage());
-//		}
-//		log.debug(e.getUsername() + "'s sent pitch reviews");
-//		for(PitchReview pr : SPR) {
-//			log.debug(pr.getEditor().getUsername());
-//			log.debug(pr.getPitch().getId());
-//		}
-//		
-//		log.debug(e.getUsername() + "'s received pitch reviews");
-//		for(PitchReview pr : RPR) {
-//			log.debug(pr.getEditor().getUsername());
-//			log.debug(pr.getPitch().getId());
-//		}
-//	}
+	public static void printEditorEPMAndEPR(Editor e){
+		Set<PitchMessage> SPM = messageServ.getSentEditorPitchMessages(e);
+		Set<PitchMessage> RPM = messageServ.getReceivedEditorPitchMessages(e);
+		Set<PitchReview> SPR = messageServ.getSentEditorPitchReview(e);
+		Set<PitchReview> RPR = messageServ.getReceivedEditorPitchReview(e);
+		
+		log.debug(e.getUsername() + "'s sent pitch messages");
+		for(PitchMessage pm : SPM) {
+			log.debug(pm.getMessage());
+		}
+		log.debug(e.getUsername() + "'s received pitch messages");
+		for(PitchMessage pm : RPM) {
+			log.debug(pm.getMessage());
+		}
+		log.debug(e.getUsername() + "'s sent pitch reviews");
+		for(PitchReview pr : SPR) {
+			log.debug(pr.getEditor().getUsername());
+			log.debug(pr.getPitch().getId());
+		}
+		
+		log.debug(e.getUsername() + "'s received pitch reviews");
+		for(PitchReview pr : RPR) {
+			log.debug(pr.getEditor().getUsername());
+			log.debug(pr.getPitch().getId());
+		}
+	}
 //	
 //	public static void printEditorAPMAndAPR(Editor e){
 //		Set<PitchMessage> SPM = messageServ.getSentAuthorPitchMessages(e);
@@ -298,32 +305,32 @@ public class MessageHibernateTest {
 //		}
 //	}
 //	
-//	public static void printAuthorPMAndPR(Author a){
-//		Set<PitchMessage> SPM = messageServ.getSentPitchMessages(a);
-//		Set<PitchMessage> RPM = messageServ.getReceivedPitchMessages(a);
-//		Set<PitchReview> SPR = messageServ.getSentPitchReview(a);
-//		Set<PitchReview> RPR = messageServ.getReceivedPitchReview(a);
-//		
-//		log.debug(a.getUsername() + "'s sent pitch messages");
-//		for(PitchMessage pm : SPM) {
-//			log.debug(pm.getMessage());
-//		}
-//		log.debug(a.getUsername() + "'s received pitch messages");
-//		for(PitchMessage pm : RPM) {
-//			log.debug(pm.getMessage());
-//		}
-//		log.debug(a.getUsername() + "'s pitch review requests");
-//		for(PitchReview pr : SPR) {
-//			log.debug(pr.getEditor().getUsername());
-//			log.debug(pr.getPitch().getId());
-//		}
-//		
-//		log.debug(a.getUsername() + "'s pitch review responses");
-//		for(PitchReview pr : RPR) {
-//			log.debug(pr.getEditor().getUsername());
-//			log.debug(pr.getPitch().getId());
-//		}
-//	}
+	public static void printAuthorPMAndPR(Author a){
+		Set<PitchMessage> SPM = messageServ.getSentPitchMessages(a);
+		Set<PitchMessage> RPM = messageServ.getReceivedPitchMessages(a);
+		Set<PitchReview> SPR = messageServ.getSentPitchReview(a);
+		Set<PitchReview> RPR = messageServ.getReceivedPitchReview(a);
+		
+		log.debug(a.getUsername() + "'s sent pitch messages");
+		for(PitchMessage pm : SPM) {
+			log.debug(pm.getMessage());
+		}
+		log.debug(a.getUsername() + "'s received pitch messages");
+		for(PitchMessage pm : RPM) {
+			log.debug(pm.getMessage());
+		}
+		log.debug(a.getUsername() + "'s pitch review requests");
+		for(PitchReview pr : SPR) {
+			log.debug(pr.getEditor().getUsername());
+			log.debug(pr.getPitch().getId());
+		}
+		
+		log.debug(a.getUsername() + "'s pitch review responses");
+		for(PitchReview pr : RPR) {
+			log.debug(pr.getEditor().getUsername());
+			log.debug(pr.getPitch().getId());
+		}
+	}
 //	
 //	public static void printEditorDMAndDC(Editor e){
 //		Set<DraftMessage> SDM = messageServ.getSentDraftMessages(e);

@@ -11,6 +11,7 @@ import com.revature.beans.PitchMessage;
 import com.revature.beans.PitchReview;
 
 public interface MessageService {
+	public PitchMessage getPitchMessageById(Integer id);
 	public PitchReview getPitchReviewById(Integer id);
 	public DraftChange getDraftChangeById(Integer id);
 	

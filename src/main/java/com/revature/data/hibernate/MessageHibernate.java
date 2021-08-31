@@ -30,6 +30,13 @@ import com.revature.utils.HibernateUtil;
 public class MessageHibernate implements MessageDAO{
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 	
+	public PitchMessage getPitchMessageById(Integer id) {
+		Session s = hu.getSession();
+		PitchMessage pm = s.get(PitchMessage.class, id);
+		s.close();
+		return pm;
+	}
+	
 	@Override 
 	public PitchReview getPitchReviewById(Integer id) {
 		Session s = hu.getSession();
@@ -544,7 +551,7 @@ public class MessageHibernate implements MessageDAO{
 	
 	public Set<PitchMessage> getReceivedEditorPitchMessages(Editor e){
 		Session s = hu.getSession();
-		String query = "FROM PMessageE2E where receiverEditor = :id";
+		String query = "FROM PMessageE2E where receiverEditor.id = :id";
 		Query<PMessageE2E> q1 = s.createQuery(query, PMessageE2E.class);
 		q1.setParameter("id", e.getId());
 		List<PMessageE2E> pmeersList = q1.getResultList();
@@ -553,10 +560,7 @@ public class MessageHibernate implements MessageDAO{
 		
 		Set<PitchMessage> PMs = new HashSet<>();
 		for(PMessageE2E pmeer : pmeers) {
-			query = "FROM PitchMessage where id = :id";
-			Query<PitchMessage> q2 = s.createQuery(query, PitchMessage.class);
-			q2.setParameter("id", pmeer.getPitchMessage().getId());
-			PitchMessage pm = q2.getSingleResult();
+			PitchMessage pm = getPitchMessageById(pmeer.getPitchMessage().getId());
 			PMs.add(pm);
 		}
 		
@@ -589,15 +593,13 @@ public class MessageHibernate implements MessageDAO{
 		List<PMessageE2E> pmeersList = q1.getResultList();
 		Set<PMessageE2E> pmeers = new HashSet<>();
 		pmeers.addAll(pmeersList);
-		
+
 		Set<PitchMessage> PMs = new HashSet<>();
 		for(PMessageE2E pmeer : pmeers) {
-			query = "FROM PitchMessage where id = :id";
-			Query<PitchMessage> q2 = s.createQuery(query, PitchMessage.class);
-			q2.setParameter("id", pmeer.getPitchMessage().getId());
-			PitchMessage pm = q2.getSingleResult();
+			PitchMessage pm = getPitchMessageById(pmeer.getPitchMessage().getId());
 			PMs.add(pm);
 		}
+		s.close();
 		
 		return PMs;
 	}
@@ -748,10 +750,7 @@ public class MessageHibernate implements MessageDAO{
 		
 		Set<PitchReview> PRs = new HashSet<>();
 		for(PReviewE2E preer : preers) {
-			query = "FROM PitchReview where id = :id";
-			Query<PitchReview> q2 = s.createQuery(query, PitchReview.class);
-			q2.setParameter("id", preer.getPitchReview().getId());
-			PitchReview pr = q2.getSingleResult();
+			PitchReview pr = getPitchReviewById(preer.getPitchReview().getId());
 			PRs.add(pr);
 		}
 		
@@ -787,10 +786,7 @@ public class MessageHibernate implements MessageDAO{
 		
 		Set<PitchReview> PRs = new HashSet<>();
 		for(PReviewE2E prees : preess) {
-			query = "FROM PitchReview where id = :id";
-			Query<PitchReview> q2 = s.createQuery(query, PitchReview.class);
-			q2.setParameter("id", prees.getPitchReview().getId());
-			PitchReview pr = q2.getSingleResult();
+			PitchReview pr = getPitchReviewById(prees.getPitchReview().getId());
 			PRs.add(pr);
 		}
 		

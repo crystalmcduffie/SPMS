@@ -52,6 +52,10 @@ public class MessageServiceImpl implements MessageService{
 		draftDAO = DAOFactory.getDraftDAO();
 	}
 	
+	public PitchMessage getPitchMessageById(Integer id) {
+		return messageDAO.getPitchMessageById(id);
+	}
+	
 	public PitchReview getPitchReviewById(Integer id) {
 		return messageDAO.getPitchReviewById(id);
 	}

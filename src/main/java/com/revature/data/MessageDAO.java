@@ -21,6 +21,8 @@ import com.revature.beans.PReviewE2A;
 import com.revature.beans.PReviewE2E;
 
 public interface MessageDAO {
+	public PitchMessage getPitchMessageById(Integer id);
+	
 	public PitchReview getPitchReviewById(Integer id);
 	public DraftChange getDraftChangeById(Integer id);
 	
